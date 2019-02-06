@@ -25,6 +25,7 @@ One request from the client is that we include a code that changes daily in orde
 
 ## Current Implementation Ideas
 ![](https://i.imgur.com/uWmhbBL.jpg)
+![](https://i.imgur.com/c2fjnYM.png)
 
 To begin with, there will be a log in page. For the moment we are thinking of using Airtable.com to host our database, so that the client can log in and access it from there. For the moment, they will input the list of current drivers and suppliers, including their details and a pin, and they will use that information to log in with an email and pin number.
 

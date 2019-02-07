@@ -1,15 +1,21 @@
 import React, { Component } from "react";
-// import logo from "./logo.svg";
 import "./App.css";
-import Logo from './img/logo.png';
-// console.log(Logo);
+import Logo from "./img/logo.png";
+import styled from 'styled-components';
+
+const Mainlogo = styled.img`
+  width: 200px;
+  height: 200px;
+`;
 
 class App extends Component {
   render() {
-    return (<div>
-      <p>hello!</p>
-      <img src={Logo} alt='logo' />
-      </div>)
+    return (
+      <div>
+        <p>hello!</p>
+          <Mainlogo src={Logo} alt="logo" />
+      </div>
+    );
   }
 }
 

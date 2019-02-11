@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Logo from "./img/logo.png";
 import Button from "./component/button/button.js";
+import Form from "./component/form/form.js";
 // console.log(Logo);
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
         <p>hello!</p>
         <img src={Logo} alt="logo" />
         <Button />
+        <Form />
       </div>
     );
   }

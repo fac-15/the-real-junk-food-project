@@ -7,6 +7,10 @@ import Form from "./component/form/form.js";
 // console.log(Logo);
 
 class App extends Component {
+  state = {
+    isAuthenticated: false
+  };
+
   render() {
     return (
       <div>

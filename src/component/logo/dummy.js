@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
-class Button extends Component {
+class Dummy extends Component {
   render() {
     return (
-        <p>juliw</p>
+        <p>wijefowiejf</p>
     );
   }
 }
 
-export default Button;
+export default Dummy;

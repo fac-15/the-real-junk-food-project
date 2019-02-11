@@ -9,6 +9,11 @@ class Form extends Component {
     const target = event.target;
     this.setState({ [target.name]: target.value });
   };
+  handleSubmit = event => {
+    event.preventDefault();
+    const data = JSON.stringify(this.state);
+    fetch("https://");
+  };
   render() {
     return (
       <form>

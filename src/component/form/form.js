@@ -1,4 +1,11 @@
 import React, { Component } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  Redirect
+} from "react-router-dom";
 const Airtable = require("airtable");
 const base = new Airtable({ apiKey: "keyc5S01QxJ4qTMSs" }).base(
   "appyRQ1dyAAvZyIPI"
@@ -8,7 +15,8 @@ class Form extends Component {
   state = {
     email: "",
     pin: "",
-    stuff: []
+    stuff: [],
+    hello: false
   };
   handleChange = event => {
     const target = event.target;
@@ -44,8 +52,14 @@ class Form extends Component {
           }
         }
       );
+    this.setState(() => {
+      return { hello: true };
+    });
   };
   render() {
+    if (this.state.hello) {
+      return <Redirect to={"/"} />;
+    }
     return (
       <form>
         <label htmlFor="email">Type your email here:</label>

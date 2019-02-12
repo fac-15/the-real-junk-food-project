@@ -2,7 +2,6 @@
   "name": "the-real-junk-food-project",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080",
   "dependencies": {
     "airtable": "^0.5.8",
     "react": "^16.8.0",
@@ -16,6 +15,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:8080",
   "eslintConfig": {
     "extends": "react-app"
   },

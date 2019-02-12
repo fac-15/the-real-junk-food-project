@@ -55,6 +55,7 @@ class Form extends Component {
           name="email"
           value={this.state.email}
           onChange={this.handleChange}
+          autoFocus
           required
         />
         <label htmlFor="pin">Type your PIN here:</label>
@@ -64,6 +65,9 @@ class Form extends Component {
           name="pin"
           value={this.state.pin}
           onChange={this.handleChange}
+          //suggested by React errors to include autoComplete attribute
+          autoComplete="off"
+          maxLength="4"
           required
         />
         <button onClick={this.handleSubmit} type="submit">

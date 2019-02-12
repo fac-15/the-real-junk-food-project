@@ -52,9 +52,7 @@ class Form extends Component {
           }
         }
       );
-    this.setState(() => {
-      return { hello: true };
-    });
+    this.props.isAuth(true);
   };
   render() {
     if (this.state.hello) {

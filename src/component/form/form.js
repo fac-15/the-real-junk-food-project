@@ -6,8 +6,8 @@ const base = new Airtable({ apiKey: "keyc5S01QxJ4qTMSs" }).base(
 
 class Form extends Component {
   state = {
-    email: "asd@asdf.com",
-    pin: "5198",
+    email: "",
+    pin: "",
     stuff: []
   };
   handleChange = event => {
@@ -17,13 +17,12 @@ class Form extends Component {
   handleSubmit = event => {
     let thisPin = this.state.pin;
     let thisEmail = this.state.email;
-    console.log(thisEmail);
     event.preventDefault();
     // const data = JSON.stringify(this.state);
     base("Drivers")
       .select({
         // Selecting the first 3 records in Grid view:
-        filterByFormula: `(AND({PIN} = ${thisPin}, {Email} = "bbb@bbb.com"))`,
+        filterByFormula: `(AND({pin} = "${thisPin}", {email} = "${thisEmail}"))`,
         maxRecords: 3,
         view: "Grid view"
       })

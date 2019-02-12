@@ -14,9 +14,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <p>hello!</p>
         <img src={Logo} alt="logo" />
-        <Button />
         <Form />
       </div>
     );

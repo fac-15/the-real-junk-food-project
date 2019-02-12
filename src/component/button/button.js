@@ -15,7 +15,14 @@ class Button extends Component {
         <button onClick={this.toggle}>
           Click me! Maybe soon I will be the submit button for the form.
         </button>
-        {this.state.toggled && <p>Howdy 🤠</p>}
+        {this.state.toggled && (
+          <p>
+            Howdy{" "}
+            <span role="img" aria-label="cowboy emoji">
+              🤠
+            </span>
+          </p>
+        )}
       </div>
     );
   }

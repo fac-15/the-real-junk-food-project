@@ -2,7 +2,6 @@ import React, { Component } from "react";
 // import logo from "./logo.svg";
 import "./App.css";
 import Logo from "./img/logo.png";
-import Button from "./component/button/button.js";
 import Form from "./component/form/form.js";
 // console.log(Logo);
 

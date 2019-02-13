@@ -6,12 +6,17 @@ import Logo from "./img/logo.png";
 import Form from "./component/form/form.js";
 import Driver from "./component/driver/driver.js";
 import PrivateRoute from "./component/routes/privateRoute.js";
+import PublicRoute from "./component/routes/publicRoute.js";
 import Supplier from "./component/supplier/supplier.js";
 // console.log(Logo);
 
 class App extends Component {
   state = {
-    isAuthenticated: true
+    isAuthenticated: false
+  };
+
+  isAuth = boolean => {
+    this.setState({ isAuthenticated: boolean });
   };
 
   render() {
@@ -31,7 +36,12 @@ class App extends Component {
           </ul>
           <img src={Logo} alt="logo" />
           <Switch>
-            <Route exact={true} path="/" component={Form} />
+            <PublicRoute
+              exact={true}
+              path="/"
+              component={Form}
+              isAuth={this.isAuth}
+            />
             <Route path="/driver" component={Driver} />
             <PrivateRoute
               path="/protec"

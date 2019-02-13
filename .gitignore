@@ -1,4 +1,9 @@
+build/
+
+
 dist/
+config.env
+
 
 # Logs
 logs

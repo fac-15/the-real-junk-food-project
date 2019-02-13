@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "airtable": "^0.5.8",
+    "body-parser": "^1.18.3",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-router-dom": "^4.3.1",

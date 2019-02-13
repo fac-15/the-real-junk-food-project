@@ -6,9 +6,13 @@ const port = process.env.PORT || 8080;
 
 app.use(express.static(path.join(__dirname, "build")));
 
-app.get("/ping", function(req, res) {
-  console.log("Server working");
-  return res.send("pong");
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.post("/login", (req, res) => {
+  console.log("You're in the login route, baby!");
+  console.log(req.body);
+  res.send(req.body);
 });
 
 app.get("/", function(req, res) {

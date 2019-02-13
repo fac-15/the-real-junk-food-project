@@ -39,6 +39,4 @@ const loginCall = (loginData, cb) => {
     );
 };
 
-// loginCall({ email: "bbb@bbb.com", pin: "5198" });
-
 module.exports = loginCall;

@@ -9,8 +9,8 @@ import {
 
 class Form extends Component {
   state = {
-    email: "hello@thisime.goaway",
-    pin: "1668"
+    email: "jjj@jjj.com",
+    pin: "2437"
   };
   handleChange = event => {
     const target = event.target;
@@ -58,7 +58,7 @@ class Form extends Component {
       },
       body: data
     })
-      .then(res => res.json())
+      .then(res => res.text())
       .then(returnedData => console.log(returnedData));
   };
   render() {

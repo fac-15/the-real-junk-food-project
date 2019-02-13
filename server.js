@@ -11,9 +11,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post("/login", (req, res) => {
-  console.log("You're in the login route, baby!", req.body);
-  loginCall(req.body);
-  // res.send(req.body);
+  console.log("You're in the login route with details: ", req.body);
+  loginCall(req.body, result => {
+    console.log("cb result", result);
+    res.send(result);
+  });
 });
 
 app.get("/", function(req, res) {

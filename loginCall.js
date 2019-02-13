@@ -8,22 +8,22 @@ if (!process.env.API_KEY) {
 
 const apiKey = process.env.API_KEY;
 
-const loginCall = loginData => {
+const loginCall = (loginData, cb) => {
+  let result = [];
   var base = new Airtable({ apiKey }).base("appyRQ1dyAAvZyIPI");
-  console.log("you're in loginCall", loginData);
   const { email, pin } = loginData;
   base("Drivers")
     .select({
-      // Selecting the first 3 records in Grid view:
       filterByFormula: `(AND({pin} = "${pin}", {email} = "${email}"))`,
-      maxRecords: 3,
+      maxRecords: 1,
       view: "Grid view"
     })
     .eachPage(
       function page(records, fetchNextPage) {
         // This function (`page`) will get called for each page of records.
         records.forEach(function(record) {
-          console.log("Retrieved", record.get("Name"));
+          result.push(record.get("Name"));
+          result.push(record.get("ID"));
         });
         // To fetch the next page of records, call `fetchNextPage`.
         // If there are more records, `page` will get called again.
@@ -33,8 +33,8 @@ const loginCall = loginData => {
       function done(err) {
         if (err) {
           console.error(err);
-          return;
         }
+        return cb(result);
       }
     );
 };

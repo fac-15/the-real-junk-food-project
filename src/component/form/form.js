@@ -1,8 +1,14 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 const Airtable = require("airtable");
 const base = new Airtable({ apiKey: "keyc5S01QxJ4qTMSs" }).base(
   "appyRQ1dyAAvZyIPI"
 );
+
+// const Forms = styled.form`
+// padding: 3em;
+// width:70%; 
+// `
 
 class Form extends Component {
   state = {

@@ -1,4 +1,16 @@
 import React, { Component } from "react";
+import styled from "styled-components";
+
+
+
+const Lovely = styled.button`
+padding: 3em;
+background: red;
+
+`
+
+
+
 
 class Button extends Component {
   state = {
@@ -21,4 +33,4 @@ class Button extends Component {
   }
 }
 
-export default Button;
+export default Lovely;

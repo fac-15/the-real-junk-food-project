@@ -3,18 +3,14 @@ const Airtable = require("airtable");
 const env = require("env2");
 env("./config.env");
 
-if (!process.env.API_KEY || !process.env.BASE_KEY ) {
+if (!process.env.API_KEY || !process.env.BASE_KEY) {
   throw new Error("Error API_KEY and BASE_KEY should be set");
 }
-
-
 
 const apiKey = process.env.API_KEY;
 const base = new Airtable({ apiKey }).base(process.env.BASE_KEY);
 
-const loginCall = (loginData, cb) => {
-  
- 
+const getUser = (loginData, cb) => {
   const { email, pin } = loginData;
   base("Drivers")
     .select({
@@ -24,14 +20,12 @@ const loginCall = (loginData, cb) => {
     })
     .eachPage(
       function page(records, fetchNextPage) {
-        // This function (`page`) will get called for each page of records.
-        records.forEach(function(record) {
-        const { Name, ID}  = record.fields;
-          return cb(null, { Name , ID});
-        });
-        // To fetch the next page of records, call `fetchNextPage`.
-        // If there are more records, `page` will get called again.
-        // If there are no more records, `done` will get called.
+        console.log("wrong deets", records);
+        if (records.length === 0) {
+          return cb(null, false);
+        }
+        const { Name, ID } = records[0].fields;
+        return cb(null, { Name, ID });
         fetchNextPage();
       },
       function done(err) {
@@ -42,4 +36,4 @@ const loginCall = (loginData, cb) => {
     );
 };
 
-module.exports = loginCall;
+module.exports = getUser;

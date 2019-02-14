@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const app = express();
-const getUser = require("./loginCall");
+const getUser = require("./getUser");
 const port = process.env.PORT || 8080;
 
 app.use(express.static(path.join(__dirname, "build")));
@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 app.post("/login", (req, res) => {
   getUser(req.body, (err, result) => {
-    if (err){
+    if (err) {
       console.log("callback error from api request", err);
     }
     res.send(result);

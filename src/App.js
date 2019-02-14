@@ -10,11 +10,17 @@ import Supplier from "./component/supplier/supplier.js";
 
 class App extends Component {
   state = {
-    isAuthenticated: false
+    isAuthenticated: false,
+    name: "",
+    ID: 0
   };
 
-  isAuth = boolean => {
-    this.setState({ isAuthenticated: boolean });
+  isAuth = data => {
+    if (data) {
+      this.setState({ isAuthenticated: true, name: data.name, ID: data.id });
+    } else {
+      this.setState({ isAuthenticated: false, name: "", ID: 0 });
+    }
   };
 
   render() {

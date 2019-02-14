@@ -12,11 +12,9 @@ class Form extends Component {
   state = {
     email: "jjj@jjj.com",
     pin: "2437",
-    userRole: "driver"
+    userRole: "Drivers"
   };
-  handleChange = event => {
-    const target = event.target;
-    // const value = target.type === 'radio' ? target.id : target.value
+  handleChange = ({target}) => {
     this.setState({ [target.name]: target.value });
   };
 
@@ -30,8 +28,10 @@ class Form extends Component {
       },
       body: data
     })
-      .then(res => res.text())
-      .then(returnedData => console.log(returnedData));
+      .then(res => res.json())
+      .then(returnedData => {
+        this.props.isAuth(returnedData);
+      });
   };
   render() {
     if (this.state.hello) {
@@ -44,9 +44,9 @@ class Form extends Component {
             type="radio"
             name="userRole"
             id="driver"
-            value="driver"
-            checked={this.state.userRole === "driver"}
-            onClick={this.handleChange}
+            value="Drivers"
+            // checked={this.state.userRole === "Drivers"}
+            onChange={this.handleChange}
           />
           Driver
         </label>
@@ -55,9 +55,9 @@ class Form extends Component {
             type="radio"
             name="userRole"
             id="supplier"
-            value="supplier"
-            checked={this.state.userRole === "supplier"}
-            onClick={this.handleChange}
+            value="Suppliers"
+            // checked={this.state.userRole === "Suppliers"}
+            onChange={this.handleChange}
           />
           Supplier
         </label>

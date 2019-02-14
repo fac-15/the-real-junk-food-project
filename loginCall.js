@@ -1,16 +1,20 @@
 const Airtable = require("airtable");
+
 const env = require("env2");
 env("./config.env");
 
-if (!process.env.API_KEY) {
-  throw new Error("Environment variable DATABASE_URL must be set");
+if (!process.env.API_KEY || !process.env.BASE_KEY ) {
+  throw new Error("Error API_KEY and BASE_KEY should be set");
 }
 
+
+
 const apiKey = process.env.API_KEY;
+const base = new Airtable({ apiKey }).base(process.env.BASE_KEY);
 
 const loginCall = (loginData, cb) => {
   let result = [];
-  var base = new Airtable({ apiKey }).base("appyRQ1dyAAvZyIPI");
+ 
   const { email, pin } = loginData;
   base("Drivers")
     .select({

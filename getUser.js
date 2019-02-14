@@ -20,12 +20,11 @@ const getUser = (loginData, cb) => {
     })
     .eachPage(
       function page(records, fetchNextPage) {
-        console.log("wrong deets", records);
         if (records.length === 0) {
           return cb(null, false);
         }
-        const { Name, ID } = records[0].fields;
-        return cb(null, { Name, ID });
+        const { Name: name, ID: id } = records[0].fields;
+        return cb(null, { name, id });
         fetchNextPage();
       },
       function done(err) {

@@ -27,8 +27,10 @@ class Form extends Component {
       },
       body: data
     })
-      .then(res => res.text())
-      .then(returnedData => console.log(returnedData));
+      .then(res => res.json())
+      .then(returnedData => {
+        this.props.isAuth(returnedData);
+      });
   };
   render() {
     if (this.state.hello) {

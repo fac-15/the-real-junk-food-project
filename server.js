@@ -2,7 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const app = express();
+<<<<<<< HEAD
 const loginCall = require("./getUser");
+=======
+const getUser = require("./loginCall");
+>>>>>>> 44918599efe556cff23783b91a243b19c9878ee6
 const port = process.env.PORT || 8080;
 
 app.use(express.static(path.join(__dirname, "build")));
@@ -11,7 +15,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post("/login", (req, res) => {
-  loginCall(req.body, result => {
+  getUser(req.body, (err, result) => {
+    if (err){
+      console.log("callback error from api request", err);
+    }
     res.send(result);
   });
 });

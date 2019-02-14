@@ -12,6 +12,9 @@ app.use(bodyParser.json());
 
 app.post("/login", (req, res) => {
   loginCall(req.body, result => {
+    if (err){
+      console.log("callback error from api request", err);
+    }
     res.send(result);
   });
 });

@@ -8,8 +8,7 @@ if (!process.env.API_KEY) {
 
 const apiKey = process.env.API_KEY;
 
-const loginCall = (loginData, cb) => {
-  let result = [];
+const getUser = (loginData, cb) => {
   var base = new Airtable({ apiKey }).base("appyRQ1dyAAvZyIPI");
   const { email, pin } = loginData;
   base("Drivers")
@@ -20,23 +19,16 @@ const loginCall = (loginData, cb) => {
     })
     .eachPage(
       function page(records, fetchNextPage) {
-        // This function (`page`) will get called for each page of records.
-        records.forEach(function(record) {
-          result.push(record.get("Name"));
-          result.push(record.get("ID"));
-        });
-        // To fetch the next page of records, call `fetchNextPage`.
-        // If there are more records, `page` will get called again.
-        // If there are no more records, `done` will get called.
+        const { Name, ID } = records[0].fields;
+        return cb({ Name, ID });
         fetchNextPage();
       },
       function done(err) {
         if (err) {
           console.error(err);
         }
-        return cb(result);
       }
     );
 };
 
-module.exports = loginCall;
+module.exports = getUser;

@@ -11,12 +11,15 @@ class Form extends Component {
   // hardcoded state for testing purposes
   state = {
     email: "jjj@jjj.com",
-    pin: "2437"
+    pin: "2437",
+    userRole: "driver"
   };
   handleChange = event => {
     const target = event.target;
+    // const value = target.type === 'radio' ? target.id : target.value
     this.setState({ [target.name]: target.value });
   };
+
   handleSubmit = event => {
     event.preventDefault();
     const data = JSON.stringify(this.state);
@@ -36,6 +39,28 @@ class Form extends Component {
     }
     return (
       <form>
+        <label htmlFor="driver">
+          <input
+            type="radio"
+            name="userRole"
+            id="driver"
+            value="driver"
+            checked={this.state.userRole === "driver"}
+            onClick={this.handleChange}
+          />
+          Driver
+        </label>
+        <label htmlFor="supplier">
+          <input
+            type="radio"
+            name="userRole"
+            id="supplier"
+            value="supplier"
+            checked={this.state.userRole === "supplier"}
+            onClick={this.handleChange}
+          />
+          Supplier
+        </label>
         <label htmlFor="email">Type your email here:</label>
         <input
           type="email"

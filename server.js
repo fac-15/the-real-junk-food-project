@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post("/login", (req, res) => {
-  getUser(req.body, result => {
+  getUser(req.body, (err, result) => {
     if (err){
       console.log("callback error from api request", err);
     }

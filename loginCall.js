@@ -13,7 +13,7 @@ const apiKey = process.env.API_KEY;
 const base = new Airtable({ apiKey }).base(process.env.BASE_KEY);
 
 const loginCall = (loginData, cb) => {
-  let result = [];
+  
  
   const { email, pin } = loginData;
   base("Drivers")
@@ -26,8 +26,8 @@ const loginCall = (loginData, cb) => {
       function page(records, fetchNextPage) {
         // This function (`page`) will get called for each page of records.
         records.forEach(function(record) {
-          result.push(record.get("Name"));
-          result.push(record.get("ID"));
+        const { Name, ID}  = record.fields;
+          return cb(null, { Name , ID});
         });
         // To fetch the next page of records, call `fetchNextPage`.
         // If there are more records, `page` will get called again.
@@ -38,7 +38,6 @@ const loginCall = (loginData, cb) => {
         if (err) {
           console.error(err);
         }
-        return cb(result);
       }
     );
 };

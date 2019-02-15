@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const app = express();
 const getUser = require("./getUser");
+const getCode = require("./getCode");
 const port = process.env.PORT || 8080;
 
 app.use(express.static(path.join(__dirname, "build")));
@@ -16,6 +17,16 @@ app.post("/login", (req, res) => {
       console.log("callback error from api request", err);
     }
     res.send(result);
+  });
+});
+
+app.get("/getcode", (req, res) => {
+  getCode((err, code) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log("Data returned from API: ", code);
+    res.send(code);
   });
 });
 

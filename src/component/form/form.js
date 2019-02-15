@@ -13,7 +13,7 @@ class Form extends Component {
   state = {
     email: "jjj@jjj.com",
     pin: "2437",
-    userRole: "Drivers"
+    userRole: DRIVER
   };
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
@@ -47,7 +47,7 @@ class Form extends Component {
             name="userRole"
             id="driver"
             value={DRIVER}
-            // checked={this.state.userRole === "Drivers"}
+            checked={this.state.userRole === DRIVER}
             onChange={this.handleChange}
           />
           Driver
@@ -58,7 +58,7 @@ class Form extends Component {
             name="userRole"
             id="supplier"
             value={SUPPLIER}
-            // checked={this.state.userRole === "Suppliers"}
+            checked={this.state.userRole === SUPPLIER}
             onChange={this.handleChange}
           />
           Supplier

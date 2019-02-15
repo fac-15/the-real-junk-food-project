@@ -7,6 +7,7 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
+import Toggle from "../toggle/toggle.js";
 
 class Form extends Component {
   // hardcoded state for testing purposes
@@ -35,13 +36,17 @@ class Form extends Component {
         this.props.isAuth(returnedData);
       });
   };
+
+  // updateUser = (checked) =>{
+  //   this.setState({userRole:checked})
+  // }
   render() {
     if (this.state.hello) {
       return <Redirect to={"/"} />;
     }
     return (
       <form>
-        <label htmlFor="driver">
+        {/* <label htmlFor="driver">
           <input
             type="radio"
             name="userRole"
@@ -62,7 +67,9 @@ class Form extends Component {
             onChange={this.handleChange}
           />
           Supplier
-        </label>
+        </label> */}
+
+        <Toggle  handleChange={this.handleChange}/>
         <label htmlFor="email">Type your email here:</label>
         <input
           type="email"

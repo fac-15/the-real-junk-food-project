@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { DRIVER, SUPPLIER } from "../../constants/userRoles.js";
 import {
   BrowserRouter as Router,
   Route,
@@ -14,11 +15,12 @@ class Form extends Component {
     pin: "2437",
     userRole: "Drivers"
   };
-  handleChange = ({target}) => {
+  handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
   };
 
   handleSubmit = event => {
+    console.log("OUR CONSTANT VARS", DRIVER, SUPPLIER);
     event.preventDefault();
     const data = JSON.stringify(this.state);
     fetch("/login", {
@@ -44,7 +46,7 @@ class Form extends Component {
             type="radio"
             name="userRole"
             id="driver"
-            value="Drivers"
+            value={DRIVER}
             // checked={this.state.userRole === "Drivers"}
             onChange={this.handleChange}
           />
@@ -55,7 +57,7 @@ class Form extends Component {
             type="radio"
             name="userRole"
             id="supplier"
-            value="Suppliers"
+            value={SUPPLIER}
             // checked={this.state.userRole === "Suppliers"}
             onChange={this.handleChange}
           />

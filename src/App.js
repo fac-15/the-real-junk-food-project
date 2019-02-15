@@ -46,7 +46,11 @@ class App extends Component {
               component={Form}
               isAuth={this.isAuth}
             />
-            <Route path="/driver" component={Driver} />
+            <PrivateRoute
+              path="/driver"
+              component={Driver}
+              authed={this.state.isAuthenticated}
+            />
             <PrivateRoute
               path="/protec"
               component={Supplier}

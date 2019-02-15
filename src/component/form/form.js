@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { DRIVER, SUPPLIER } from "../../constants/userRoles.js";
 import {
   BrowserRouter as Router,
   Route,
@@ -11,13 +12,15 @@ class Form extends Component {
   // hardcoded state for testing purposes
   state = {
     email: "jjj@jjj.com",
-    pin: "2437"
+    pin: "2437",
+    userRole: "Drivers"
   };
-  handleChange = event => {
-    const target = event.target;
+  handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
   };
+
   handleSubmit = event => {
+    console.log("OUR CONSTANT VARS", DRIVER, SUPPLIER);
     event.preventDefault();
     const data = JSON.stringify(this.state);
     fetch("/login", {
@@ -27,8 +30,10 @@ class Form extends Component {
       },
       body: data
     })
-      .then(res => res.text())
-      .then(returnedData => console.log(returnedData));
+      .then(res => res.json())
+      .then(returnedData => {
+        this.props.isAuth(returnedData);
+      });
   };
   render() {
     if (this.state.hello) {
@@ -36,6 +41,28 @@ class Form extends Component {
     }
     return (
       <form>
+        <label htmlFor="driver">
+          <input
+            type="radio"
+            name="userRole"
+            id="driver"
+            value={DRIVER}
+            // checked={this.state.userRole === "Drivers"}
+            onChange={this.handleChange}
+          />
+          Driver
+        </label>
+        <label htmlFor="supplier">
+          <input
+            type="radio"
+            name="userRole"
+            id="supplier"
+            value={SUPPLIER}
+            // checked={this.state.userRole === "Suppliers"}
+            onChange={this.handleChange}
+          />
+          Supplier
+        </label>
         <label htmlFor="email">Type your email here:</label>
         <input
           type="email"

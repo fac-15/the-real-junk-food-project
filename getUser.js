@@ -11,8 +11,8 @@ const apiKey = process.env.API_KEY;
 const base = new Airtable({ apiKey }).base(process.env.BASE_KEY);
 
 const getUser = (loginData, cb) => {
-  const { email, pin } = loginData;
-  base("Drivers")
+  const { email, pin, userRole } = loginData;
+  base(userRole)
     .select({
       filterByFormula: `(AND({pin} = "${pin}", {email} = "${email}"))`,
       maxRecords: 1,
@@ -20,12 +20,11 @@ const getUser = (loginData, cb) => {
     })
     .eachPage(
       function page(records, fetchNextPage) {
-        console.log("wrong deets", records);
         if (records.length === 0) {
           return cb(null, false);
         }
-        const { Name, ID } = records[0].fields;
-        return cb(null, { Name, ID });
+        const { Name: name, ID: id } = records[0].fields;
+        return cb(null, { name, id });
         fetchNextPage();
       },
       function done(err) {

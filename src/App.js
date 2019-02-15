@@ -49,7 +49,7 @@ class App extends Component {
             <PrivateRoute
               path="/driver"
               component={Driver}
-              authed={this.state.isAuthenticated}
+              details={this.state}
             />
             <PrivateRoute
               path="/protec"

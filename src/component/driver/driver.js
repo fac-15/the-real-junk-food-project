@@ -1,14 +1,13 @@
 import React from "react";
 
 class Driver extends React.Component {
-  render() {
-    console.log('Driver router', this.authed);  
+  render() { 
     return (
       <div>
         <p>TODAY'S CODE</p>
         <p></p>
         <p>YOUR ID</p>
-        <p></p>
+        <p>{this.props.details.name}</p>
         <p>Your completed pickups today:</p>
       </div>
     );

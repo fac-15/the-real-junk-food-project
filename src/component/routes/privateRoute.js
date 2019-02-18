@@ -7,12 +7,11 @@ import {
   Redirect
 } from "react-router-dom";
 
-const PrivateRoute = ({ authed: authed, component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, details: details }) => (
   <Route
-    {...rest}
     render={props =>
-      authed ? (
-        <Component {...props} />
+      details.isAuthenticated ? (
+        <Component {...props} details={details} />
       ) : (
         <Redirect
           to={{

@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const app = express();
 const getUser = require("./getUser");
+const getCode = require("./getCode");
 const port = process.env.PORT || 8080;
 
 app.use(express.static(path.join(__dirname, "build")));
@@ -13,9 +14,20 @@ app.use(bodyParser.json());
 app.post("/login", (req, res) => {
   getUser(req.body, (err, result) => {
     if (err) {
-      console.log("callback error from api request", err);
+      console.log("Callback error from api request: ", err);
     }
+    console.log("Login data returned from API: ", result);
     res.send(result);
+  });
+});
+
+app.get("/getcode", (req, res) => {
+  getCode((err, code) => {
+    if (err) {
+      console.log("Callback error from getCode request: ", err);
+    }
+    console.log("Code returned from API: ", code);
+    res.send(code);
   });
 });
 

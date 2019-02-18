@@ -11,7 +11,6 @@ import decode from "jwt-decode";
 import Swal from "sweetalert2";
 
 class Form extends Component {
-  // hardcoded state for testing purposes
   state = {
     email: "jjj@jjj.com",
     pin: "2437",
@@ -22,7 +21,6 @@ class Form extends Component {
   };
 
   handleSubmit = event => {
-    console.log("OUR CONSTANT VARS", DRIVER, SUPPLIER);
     event.preventDefault();
     const data = JSON.stringify(this.state);
     fetch("/login", {
@@ -52,9 +50,6 @@ class Form extends Component {
   };
 
   render() {
-    if (this.state.hello) {
-      return <Redirect to={"/"} />;
-    }
     return (
       <form>
         <label htmlFor="driver">

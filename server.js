@@ -15,14 +15,11 @@ app.use(bodyParser.json());
 app.post("/login", (req, res) => {
   getUser(req.body, (err, result) => {
     if (err) {
-      console.log("Callback error from api request: ", err);
     } else if (result === false) {
-      console.log("in the else if");
       res.json({
         success: false
       });
     } else {
-      console.log("Login data returned from API: ", result);
       let token = jwt.sign(
         { username: result.name, pin: result.id },
         "Charlie is not a bitch",
@@ -40,9 +37,7 @@ app.post("/login", (req, res) => {
 app.get("/getcode", (req, res) => {
   getCode((err, code) => {
     if (err) {
-      console.log("Callback error from getCode request: ", err);
     }
-    console.log("Code returned from API: ", code);
     res.send(code);
   });
 });

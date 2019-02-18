@@ -7,9 +7,10 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
+import decode from "jwt-decode";
+import Swal from "sweetalert2";
 
 class Form extends Component {
-  // hardcoded state for testing purposes
   state = {
     email: "jjj@jjj.com",
     pin: "2437",
@@ -20,7 +21,6 @@ class Form extends Component {
   };
 
   handleSubmit = event => {
-    console.log("OUR CONSTANT VARS", DRIVER, SUPPLIER);
     event.preventDefault();
     const data = JSON.stringify(this.state);
     fetch("/login", {
@@ -32,13 +32,24 @@ class Form extends Component {
     })
       .then(res => res.json())
       .then(returnedData => {
-        this.props.isAuth(returnedData);
+        if (returnedData.success === false) {
+          Swal.fire({
+            type: "error",
+            title: "Incorrect login...",
+            text: "Please try again!"
+          });
+        } else {
+          localStorage.setItem("id_token", returnedData.token);
+          Swal.fire({
+            type: "success",
+            title: "Successful Login!",
+            text: "Woohoo"
+          });
+        }
       });
   };
+
   render() {
-    if (this.state.hello) {
-      return <Redirect to={"/"} />;
-    }
     return (
       <form>
         <label htmlFor="driver">

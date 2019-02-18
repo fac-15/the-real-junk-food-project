@@ -4,6 +4,7 @@ const path = require("path");
 const app = express();
 const getUser = require("./getUser");
 const getCode = require("./getCode");
+const jwt = require('jsonwebtoken');
 const port = process.env.PORT || 8080;
 
 app.use(express.static(path.join(__dirname, "build")));
@@ -17,8 +18,13 @@ app.post("/login", (req, res) => {
       console.log("Callback error from api request: ", err);
     }
     console.log("Login data returned from API: ", result);
-    res.send(result);
-  });
+    let token = jwt.sign({username: result.name, pin: result.id}, 'Charlie is not a bitch', {expiresIn: 86400});
+    res.json({
+      sucess: true,
+      err: null,
+      token
+    }); 
+    });
 });
 
 app.get("/getcode", (req, res) => {

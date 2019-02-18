@@ -7,6 +7,7 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
+import decode from 'jwt-decode';
 
 class Form extends Component {
   // hardcoded state for testing purposes
@@ -32,9 +33,12 @@ class Form extends Component {
     })
       .then(res => res.json())
       .then(returnedData => {
+        localStorage.setItem('id_token', returnedData.token);
+        console.log('Show me the token!', returnedData.token);
         this.props.isAuth(returnedData);
       });
   };
+
   render() {
     if (this.state.hello) {
       return <Redirect to={"/"} />;

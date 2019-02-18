@@ -5,7 +5,10 @@
   "dependencies": {
     "airtable": "^0.5.8",
     "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
     "env2": "^2.2.2",
+    "jsonwebtoken": "^8.4.0",
+    "jwt-decode": "^2.2.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-router-dom": "^4.3.1",

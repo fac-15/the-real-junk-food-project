@@ -20,8 +20,9 @@ app.post("/login", (req, res) => {
         success: false
       });
     } else {
+      console.log("result isss: ", result);
       let token = jwt.sign(
-        { username: result.name, pin: result.id },
+        { username: result.name, id: result.id, userRole: result.userRole },
         "Charlie is not a bitch",
         { expiresIn: 86400 }
       );

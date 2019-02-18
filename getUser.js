@@ -24,7 +24,7 @@ const getUser = (loginData, cb) => {
           return cb(null, false);
         }
         const { Name: name, ID: id } = records[0].fields;
-        return cb(null, { name, id });
+        return cb(null, { name, id, userRole: userRole });
         fetchNextPage();
       },
       function done(err) {

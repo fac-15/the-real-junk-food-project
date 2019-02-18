@@ -6,16 +6,22 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
+import decode from "jwt-decode";
+
+const checkToken = () => {
+  console.log(decode(localStorage.getItem("id_token")));
+  return localStorage.getItem("id_token");
+};
 
 const PrivateRoute = ({ component: Component, details: details }) => (
   <Route
     render={props =>
-      details.isAuthenticated ? (
+      checkToken() ? (
         <Component {...props} details={details} />
       ) : (
         <Redirect
           to={{
-            pathname: "/login",
+            pathname: "/",
             state: { from: props.location }
           }}
         />

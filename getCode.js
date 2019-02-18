@@ -10,6 +10,7 @@ if (!process.env.API_KEY || !process.env.BASE_KEY) {
 const apiKey = process.env.API_KEY;
 const base = new Airtable({ apiKey }).base(process.env.BASE_KEY);
 
+//fetches the first (and only) row from the Code Airtable, dedined by an id
 const getCode = cb => {
   base("code").find("recL71yXmBgS44Ub0", function(err, record) {
     if (err) {

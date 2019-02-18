@@ -7,7 +7,8 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
-import decode from 'jwt-decode';
+import decode from "jwt-decode";
+import Swal from "sweetalert2";
 
 class Form extends Component {
   // hardcoded state for testing purposes
@@ -33,10 +34,20 @@ class Form extends Component {
     })
       .then(res => res.json())
       .then(returnedData => {
-        localStorage.setItem('id_token', returnedData.token);
-        console.log('this is decoded', decode(returnedData.token));
-        console.log('Show me the token!', returnedData.token);
-        this.props.isAuth(returnedData);
+        if (returnedData.success === false) {
+          Swal.fire({
+            type: "error",
+            title: "Incorrect login...",
+            text: "Please try again!"
+          });
+        } else {
+          localStorage.setItem("id_token", returnedData.token);
+          Swal.fire({
+            type: "success",
+            title: "Successful Login!",
+            text: "Woohoo"
+          });
+        }
       });
   };
 

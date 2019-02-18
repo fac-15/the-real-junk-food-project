@@ -34,6 +34,7 @@ class Form extends Component {
       .then(res => res.json())
       .then(returnedData => {
         localStorage.setItem('id_token', returnedData.token);
+        console.log('this is decoded', decode(returnedData.token));
         console.log('Show me the token!', returnedData.token);
         this.props.isAuth(returnedData);
       });

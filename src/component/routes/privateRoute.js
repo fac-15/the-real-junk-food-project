@@ -15,8 +15,9 @@ const PrivateRoute = ({
 }) => (
   <Route
     render={props =>
+      //Makes sure that a logged in driver can't access supplier page
       `/${checkToken().userRole}` === path ? (
-        <Component {...props} checkToken={checkToken} />
+        <Component {...props} />
       ) : (
         <Redirect
           to={{

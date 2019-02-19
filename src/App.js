@@ -24,8 +24,7 @@ class App extends Component {
     }
   };
 
-  //not 100% sure this needs to be here but will leave for now
-  //currently using jwt instead of state for component details
+  //decodes token for auth purposes, or returns false if none exist
   checkToken = () => {
     if (localStorage.getItem("id_token")) {
       const { username, id, userRole } = decode(
@@ -42,14 +41,6 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/loggedin">Driver</Link>
-            </li>
-          </ul>
           <img src={Logo} alt="logo" />
           <Switch>
             <PublicRoute

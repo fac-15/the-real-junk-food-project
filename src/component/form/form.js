@@ -9,6 +9,13 @@ import {
 } from "react-router-dom";
 import decode from "jwt-decode";
 import Swal from "sweetalert2";
+import styled from "styled-components";
+import Button from "../../styling/button.js";
+import Input from "../../styling/form.js";
+const Airtable = require("airtable");
+const base = new Airtable({ apiKey: "keyc5S01QxJ4qTMSs" }).base(
+  "appyRQ1dyAAvZyIPI"
+);
 
 class Form extends Component {
   state = {
@@ -53,7 +60,7 @@ class Form extends Component {
     return (
       <form>
         <label htmlFor="driver">
-          <input
+          <Input
             type="radio"
             name="userRole"
             id="driver"
@@ -64,7 +71,7 @@ class Form extends Component {
           Driver
         </label>
         <label htmlFor="supplier">
-          <input
+          <Input
             type="radio"
             name="userRole"
             id="supplier"
@@ -74,31 +81,33 @@ class Form extends Component {
           />
           Supplier
         </label>
-        <label htmlFor="email">Type your email here:</label>
-        <input
+        <label htmlFor="email" />
+        <Input
           type="email"
           id="email"
           name="email"
           value={this.state.email}
           onChange={this.handleChange}
+          placeholder="Type your email here"
           autoFocus
           required
         />
-        <label htmlFor="pin">Type your PIN here:</label>
-        <input
+        <label htmlFor="pin" />
+        <Input
           type="password"
           id="pin"
           name="pin"
           value={this.state.pin}
           onChange={this.handleChange}
+          placeholder="Type your PIN here"
           //suggested by React errors to include autoComplete attribute
           autoComplete="off"
           maxLength="4"
           required
         />
-        <button onClick={this.handleSubmit} type="submit">
+        <Button onClick={this.handleSubmit} type="submit">
           Submit
-        </button>
+        </Button>
       </form>
     );
   }

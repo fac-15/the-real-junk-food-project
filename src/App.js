@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import "./App.css";
 import Logo from "./img/logo.png";
+import LogoStyle from "./styling/logo.js";
 import Form from "./component/form/form.js";
 import Driver from "./component/driver/driver.js";
 import PrivateRoute from "./component/routes/privateRoute.js";
 import PublicRoute from "./component/routes/publicRoute.js";
 import Supplier from "./component/supplier/supplier.js";
+import GlobalStyle from "./styling/global.js";
 
 class App extends Component {
   state = {
@@ -27,6 +29,8 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <GlobalStyle />
+
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -38,7 +42,7 @@ class App extends Component {
               <Link to="/protec">Protected Route</Link>
             </li>
           </ul>
-          <img src={Logo} alt="logo" />
+          <LogoStyle src={Logo} alt="logo" />
           <Switch>
             <PublicRoute
               exact={true}

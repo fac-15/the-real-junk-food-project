@@ -14,7 +14,8 @@ class Form extends Component {
   state = {
     email: "jjj@jjj.com",
     pin: "2437",
-    userRole: DRIVER
+    userRole: DRIVER,
+    loggedIn: false
   };
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
@@ -45,11 +46,15 @@ class Form extends Component {
             title: "Successful Login!",
             text: "Woohoo"
           });
+          this.setState({ loggedIn: true });
         }
       });
   };
 
   render() {
+    if (this.state.loggedIn) {
+      return <Redirect to="/loggedin" />;
+    }
     return (
       <form>
         <label htmlFor="driver">
@@ -96,9 +101,11 @@ class Form extends Component {
           maxLength="4"
           required
         />
-        <button onClick={this.handleSubmit} type="submit">
-          Submit
-        </button>
+        <Link to={"/"}>
+          <button onClick={this.handleSubmit} type="submit">
+            Submit
+          </button>
+        </Link>
       </form>
     );
   }

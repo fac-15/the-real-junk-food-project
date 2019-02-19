@@ -41,18 +41,14 @@ class App extends Component {
               <Link to="/loggedin">Driver</Link>
             </li>
           </ul>
-          <img src={Logo} alt="logo" />
+          <marquee>
+            <img src={Logo} alt="logo" />
+          </marquee>
           <Switch>
-            <PublicRoute exact={true} path="/" component={Form} />
+            <Route exact path="/" component={Form} />
             <PrivateRoute
-              path="/"
-              component={
-                this.state.userRole === "Drivers"
-                  ? Driver
-                  : this.state.userRole === "Suppliers"
-                  ? Supplier
-                  : Form
-              }
+              path="/loggedin"
+              component={this.state.userRole === "Drivers" ? Driver : Supplier}
               details={this.state}
             />
           </Switch>

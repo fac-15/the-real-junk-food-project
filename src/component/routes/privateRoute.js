@@ -27,8 +27,7 @@ const PrivateRoute = ({ component: Component, details: details }) => (
       ) : (
         <Redirect
           to={{
-            pathname: "/form",
-            state: { from: props.location }
+            pathname: "/"
           }}
         />
       )

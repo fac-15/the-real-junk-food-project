@@ -8,22 +8,15 @@ import {
 } from "react-router-dom";
 import decode from "jwt-decode";
 
-//checks that a jwt with the right id exists
-const checkToken = () => {
-  return localStorage.getItem("id_token");
-};
-
-//checks that the role in state is the same as the role in the jwt
-const checkRole = role => {
-  const decodedRole = decode(localStorage.getItem("id_token")).userRole;
-  return decodedRole === role;
-};
-
-const PrivateRoute = ({ component: Component, details: details }) => (
+const PrivateRoute = ({
+  component: Component,
+  checkToken: checkToken,
+  path: path
+}) => (
   <Route
     render={props =>
-      checkToken() && checkRole(details.userRole) ? (
-        <Component {...props} details={details} />
+      `/${checkToken().userRole}` === path ? (
+        <Component {...props} checkToken={checkToken} />
       ) : (
         <Redirect
           to={{

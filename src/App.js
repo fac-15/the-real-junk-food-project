@@ -13,7 +13,7 @@ class App extends Component {
   state = {
     username: "",
     id: 0,
-    userRole: "Drivers"
+    userRoleState: ""
   };
 
   isAuth = data => {
@@ -24,9 +24,18 @@ class App extends Component {
     }
   };
 
+  //not 100% sure this needs to be here but will leave for now
+  //currently using jwt instead of state for component details
   checkToken = () => {
-    const { username, id, userRole } = decode(localStorage.getItem("id_token"));
-    this.setState({ username, id, userRole });
+    if (localStorage.getItem("id_token")) {
+      const { username, id, userRole } = decode(
+        localStorage.getItem("id_token")
+      );
+      return { username, id, userRole };
+    } else {
+      console.log("No token exists with that ID");
+      return false;
+    }
   };
 
   render() {
@@ -41,9 +50,7 @@ class App extends Component {
               <Link to="/loggedin">Driver</Link>
             </li>
           </ul>
-          <marquee>
-            <img src={Logo} alt="logo" />
-          </marquee>
+          <img src={Logo} alt="logo" />
           <Switch>
             <PublicRoute
               exact
@@ -52,9 +59,14 @@ class App extends Component {
               component={Form}
             />
             <PrivateRoute
-              path="/loggedin"
-              component={this.state.userRole === "Drivers" ? Driver : Supplier}
-              details={this.state}
+              path="/Drivers"
+              component={Driver}
+              checkToken={this.checkToken}
+            />
+            <PrivateRoute
+              path="/Suppliers"
+              component={Supplier}
+              checkToken={this.checkToken}
             />
           </Switch>
         </div>

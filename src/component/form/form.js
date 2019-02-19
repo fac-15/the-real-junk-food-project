@@ -15,7 +15,8 @@ class Form extends Component {
     email: "jjj@jjj.com",
     pin: "2437",
     userRole: DRIVER,
-    loggedIn: false
+    loggedIn: false,
+    redirectPath: ""
   };
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
@@ -46,15 +47,17 @@ class Form extends Component {
             title: "Successful Login!",
             text: "Woohoo"
           });
-          this.props.checkToken();
-          this.setState({ loggedIn: true });
+          const { userRole } = this.props.checkToken();
+          this.setState({ loggedIn: true, redirectPath: userRole });
         }
       });
   };
 
   render() {
-    if (this.state.loggedIn) {
-      return <Redirect to="/loggedin" />;
+    if (this.state.loggedIn && this.state.redirectPath === "Drivers") {
+      return <Redirect to="/Drivers" />;
+    } else if (this.state.loggedIn && this.state.redirectPath === "Suppliers") {
+      return <Redirect to="/Suppliers" />;
     }
     return (
       <form>

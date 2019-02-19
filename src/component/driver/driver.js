@@ -1,4 +1,5 @@
 import React from "react";
+import decode from "jwt-decode";
 
 class Driver extends React.Component {
   state = {
@@ -26,13 +27,17 @@ class Driver extends React.Component {
     this.getCodeFunc();
   }
 
+  populateId = () => {
+    return decode(localStorage.getItem("id_token")).id;
+  };
+
   render() {
     return (
       <div>
         <p>TODAY'S CODE</p>
         <p>{!this.state.code ? "loading" : this.state.code}</p>
         <p>YOUR ID</p>
-        <p>{this.props.details.name}</p>
+        <p>{this.populateId()}</p>
         <p>Your completed pickups today:</p>
       </div>
     );

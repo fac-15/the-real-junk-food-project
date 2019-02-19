@@ -11,8 +11,8 @@ import decode from "jwt-decode";
 
 class App extends Component {
   state = {
-    name: "",
-    ID: 0,
+    username: "",
+    id: 0,
     userRole: "Drivers"
   };
 
@@ -25,8 +25,8 @@ class App extends Component {
   };
 
   checkToken = () => {
-    const { name, ID, userRole } = decode(localStorage.getItem("id_token"));
-    this.setState({ name, ID, userRole });
+    const { username, id, userRole } = decode(localStorage.getItem("id_token"));
+    this.setState({ username, id, userRole });
   };
 
   render() {
@@ -45,7 +45,12 @@ class App extends Component {
             <img src={Logo} alt="logo" />
           </marquee>
           <Switch>
-            <Route exact path="/" component={Form} />
+            <PublicRoute
+              exact
+              path="/"
+              checkToken={this.checkToken}
+              component={Form}
+            />
             <PrivateRoute
               path="/loggedin"
               component={this.state.userRole === "Drivers" ? Driver : Supplier}

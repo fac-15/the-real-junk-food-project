@@ -46,6 +46,7 @@ class Form extends Component {
             title: "Successful Login!",
             text: "Woohoo"
           });
+          this.props.checkToken();
           this.setState({ loggedIn: true });
         }
       });

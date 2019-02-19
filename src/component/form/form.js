@@ -12,9 +12,9 @@ import Swal from "sweetalert2";
 
 class Form extends Component {
   state = {
-    email: "jjj@jjj.com",
-    pin: "2437",
-    userRole: DRIVER,
+    email: "info@morrissons.com",
+    pin: "2840",
+    userRole: SUPPLIER,
     loggedIn: false,
     redirectPath: ""
   };
@@ -50,7 +50,13 @@ class Form extends Component {
           const { userRole } = this.props.checkToken();
           this.setState({ loggedIn: true, redirectPath: userRole });
         }
-      });
+      })
+      .catch(err =>
+        console.log(
+          "Fetch error. Maybe check your node server is running?",
+          err
+        )
+      );
   };
 
   render() {

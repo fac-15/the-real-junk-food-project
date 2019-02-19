@@ -9,7 +9,7 @@ class LogoutButton extends Component {
   render() {
     return (
       <Link to={"/"}>
-        <button onClick={this.logout}>Logout</button>;
+        <button onClick={this.logout}>Logout</button>
       </Link>
     );
   }

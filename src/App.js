@@ -59,6 +59,7 @@ class App extends Component {
               component={Supplier}
               checkToken={this.checkToken}
             />
+            <Route component={Form} />
           </Switch>
         </div>
       </Router>

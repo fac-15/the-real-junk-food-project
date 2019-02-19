@@ -9,6 +9,7 @@ import PrivateRoute from "./component/routes/privateRoute.js";
 import PublicRoute from "./component/routes/publicRoute.js";
 import Supplier from "./component/supplier/supplier.js";
 import GlobalStyle from "./styling/global.js";
+import Grid from "./styling/grid.js";
 
 class App extends Component {
   state = {
@@ -28,40 +29,41 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <GlobalStyle />
-
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/driver">Driver</Link>
-            </li>
-            <li>
-              <Link to="/protec">Protected Route</Link>
-            </li>
-          </ul>
-          <LogoStyle src={Logo} alt="logo" />
-          <Switch>
-            <PublicRoute
-              exact={true}
-              path="/"
-              component={Form}
-              isAuth={this.isAuth}
-            />
-            <PrivateRoute
-              path="/driver"
-              component={Driver}
-              details={this.state}
-            />
-            <PrivateRoute
-              path="/protec"
-              component={Supplier}
-              authed={this.state.isAuthenticated}
-            />
-          </Switch>
-        </div>
+        <Grid>
+          <div>
+            <GlobalStyle />
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/driver">Driver</Link>
+              </li>
+              <li>
+                <Link to="/protec">Protected Route</Link>
+              </li>
+            </ul>
+            <LogoStyle src={Logo} alt="logo" />
+            <Switch>
+              <PublicRoute
+                exact={true}
+                path="/"
+                component={Form}
+                isAuth={this.isAuth}
+              />
+              <PrivateRoute
+                path="/driver"
+                component={Driver}
+                details={this.state}
+              />
+              <PrivateRoute
+                path="/protec"
+                component={Supplier}
+                authed={this.state.isAuthenticated}
+              />
+            </Switch>
+          </div>
+        </Grid>
       </Router>
     );
   }

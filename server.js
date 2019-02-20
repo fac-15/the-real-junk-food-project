@@ -5,8 +5,20 @@ const app = express();
 const getUser = require("./getUser");
 const getDriver = require("./getDriver");
 const getCode = require("./getCode");
+const updateCode = require("./updateCode");
 const jwt = require("jsonwebtoken");
 const port = process.env.PORT || 8080;
+const cronJob = require("cron").CronJob;
+
+new cronJob(
+  "5 0 * * *",
+  () => {
+    updateCode();
+  },
+  null,
+  true,
+  "Europe/London"
+);
 
 const env = require("env2");
 env("./config.env");

@@ -6,6 +6,7 @@
     "airtable": "^0.5.8",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.4",
+    "cron": "^1.6.0",
     "env2": "^2.2.2",
     "jsonwebtoken": "^8.4.0",
     "jwt-decode": "^2.2.0",

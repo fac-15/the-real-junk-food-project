@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LogoutButton from "../logoutButton/logoutButton.js";
+import LogoutButton from "../buttons/logout/logout.js";
 import Swal from "sweetalert2";
 
 class Supplier extends React.Component {
   state = {
-    id: "99375",
-    dailyCode: "HELLOYESIAMCODE"
+    id: "",
+    dailyCode: ""
   };
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });

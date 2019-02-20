@@ -12,9 +12,9 @@ import Swal from "sweetalert2";
 
 class Form extends Component {
   state = {
-    email: "info@morrissons.com",
-    pin: "2840",
-    userRole: SUPPLIER,
+    email: "",
+    pin: "",
+    userRole: DRIVER,
     loggedIn: false,
     redirectPath: ""
   };

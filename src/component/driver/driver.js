@@ -1,6 +1,6 @@
 import React from "react";
 import decode from "jwt-decode";
-import Logout from "../logoutButton/logoutButton.js";
+import Logout from "../buttons/logout/logout.js";
 
 class Driver extends React.Component {
   state = {
@@ -36,7 +36,7 @@ class Driver extends React.Component {
     return (
       <div>
         <p>TODAY'S CODE</p>
-        <p>{!this.state.code ? "loading" : this.state.code}</p>
+        <p>{this.state.code || "loading"}</p>
         <p>YOUR ID</p>
         <p>{this.populateId()}</p>
         <Logout />

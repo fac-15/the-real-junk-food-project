@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const app = express();
 const getUser = require("./getUser");
+const getDriver = require("./getDriver");
 const getCode = require("./getCode");
 const jwt = require("jsonwebtoken");
 const port = process.env.PORT || 8080;
@@ -24,6 +25,7 @@ app.use(bodyParser.json());
 app.post("/login", (req, res) => {
   getUser(req.body, (err, result) => {
     if (err) {
+      console.log("Error, login route", err);
     } else if (result === false) {
       res.json({
         success: false
@@ -40,6 +42,30 @@ app.post("/login", (req, res) => {
         err: null,
         token
       });
+    }
+  });
+});
+
+app.post("/verify", (req, res) => {
+  getCode((error, code) => {
+    if (error) {
+      console.log("getCode error", error);
+    }
+    if (code.Code === req.body.dailyCode) {
+      getDriver(req.body, (err, result) => {
+        if (err) {
+          console.log("ya done err", err);
+        } else if (result === false) {
+          res.json({
+            success: false
+          });
+        } else {
+          console.log("and result again", result);
+          res.json({ success: true, err: null, name: result.name });
+        }
+      });
+    } else {
+      res.json({ success: false });
     }
   });
 });

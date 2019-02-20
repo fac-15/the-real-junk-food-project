@@ -50,7 +50,13 @@ class Form extends Component {
           const { userRole } = this.props.checkToken();
           this.setState({ loggedIn: true, redirectPath: userRole });
         }
-      });
+      })
+      .catch(err =>
+        console.log(
+          "Fetch error. Maybe check your node server is running?",
+          err
+        )
+      );
   };
 
   render() {

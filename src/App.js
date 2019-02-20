@@ -7,19 +7,33 @@ import Driver from "./component/driver/driver.js";
 import PrivateRoute from "./component/routes/privateRoute.js";
 import PublicRoute from "./component/routes/publicRoute.js";
 import Supplier from "./component/supplier/supplier.js";
+import decode from "jwt-decode";
 
 class App extends Component {
   state = {
-    isAuthenticated: false,
-    name: "",
-    ID: 0
+    username: "",
+    id: 0,
+    userRoleState: ""
   };
 
   isAuth = data => {
     if (data) {
-      this.setState({ isAuthenticated: true, name: data.name, ID: data.id });
+      this.setState({ name: data.name, ID: data.id });
     } else {
-      this.setState({ isAuthenticated: false, name: "", ID: 0 });
+      this.setState({ name: "", ID: 0 });
+    }
+  };
+
+  //decodes token for auth purposes, or returns false if none exist
+  checkToken = () => {
+    if (localStorage.getItem("id_token")) {
+      const { username, id, userRole } = decode(
+        localStorage.getItem("id_token")
+      );
+      return { username, id, userRole };
+    } else {
+      console.log("No token exists with that ID");
+      return false;
     }
   };
 
@@ -27,35 +41,25 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/driver">Driver</Link>
-            </li>
-            <li>
-              <Link to="/protec">Protected Route</Link>
-            </li>
-          </ul>
           <img src={Logo} alt="logo" />
           <Switch>
             <PublicRoute
-              exact={true}
+              exact
               path="/"
+              checkToken={this.checkToken}
               component={Form}
-              isAuth={this.isAuth}
             />
             <PrivateRoute
-              path="/driver"
+              path="/Drivers"
               component={Driver}
-              details={this.state}
+              checkToken={this.checkToken}
             />
             <PrivateRoute
-              path="/protec"
+              path="/Suppliers"
               component={Supplier}
-              authed={this.state.isAuthenticated}
+              checkToken={this.checkToken}
             />
+            <Route component={Form} />
           </Switch>
         </div>
       </Router>

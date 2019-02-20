@@ -6,17 +6,18 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
+import decode from "jwt-decode";
 
-const PrivateRoute = ({ component: Component, details: details }) => (
+const PrivateRoute = ({ component: Component, checkToken, path }) => (
   <Route
     render={props =>
-      details.isAuthenticated ? (
-        <Component {...props} details={details} />
+      //Makes sure that a logged in driver can't access supplier page
+      `/${checkToken().userRole}` === path ? (
+        <Component {...props} />
       ) : (
         <Redirect
           to={{
-            pathname: "/login",
-            state: { from: props.location }
+            pathname: "/"
           }}
         />
       )

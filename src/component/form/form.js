@@ -12,9 +12,11 @@ import Swal from "sweetalert2";
 
 class Form extends Component {
   state = {
-    email: "jjj@jjj.com",
-    pin: "2437",
-    userRole: DRIVER
+    email: "",
+    pin: "",
+    userRole: DRIVER,
+    loggedIn: false,
+    redirectPath: ""
   };
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
@@ -45,11 +47,18 @@ class Form extends Component {
             title: "Successful Login!",
             text: "Woohoo"
           });
+          const { userRole } = this.props.checkToken();
+          this.setState({ loggedIn: true, redirectPath: userRole });
         }
       });
   };
 
   render() {
+    if (this.state.loggedIn && this.state.redirectPath === "Drivers") {
+      return <Redirect to="/Drivers" />;
+    } else if (this.state.loggedIn && this.state.redirectPath === "Suppliers") {
+      return <Redirect to="/Suppliers" />;
+    }
     return (
       <form>
         <label htmlFor="driver">
@@ -96,9 +105,11 @@ class Form extends Component {
           maxLength="4"
           required
         />
-        <button onClick={this.handleSubmit} type="submit">
-          Submit
-        </button>
+        <Link to={"/"}>
+          <button onClick={this.handleSubmit} type="submit">
+            Submit
+          </button>
+        </Link>
       </form>
     );
   }

@@ -9,9 +9,11 @@ import {
 } from "react-router-dom";
 import decode from "jwt-decode";
 import Swal from "sweetalert2";
-import styled from "styled-components";
+// import styled from "styled-components";
 import Button from "../../styling/button.js";
 import Input from "../../styling/form.js";
+import FormStyle from "../../styling/fullForm.js"
+// import Grid from "../../styling/grid.js";
 const Airtable = require("airtable");
 const base = new Airtable({ apiKey: "keyc5S01QxJ4qTMSs" }).base(
   "appyRQ1dyAAvZyIPI"
@@ -58,7 +60,9 @@ class Form extends Component {
 
   render() {
     return (
-      <form>
+    
+      
+      <FormStyle >
         <label htmlFor="driver">
           <Input
             type="radio"
@@ -105,10 +109,14 @@ class Form extends Component {
           maxLength="4"
           required
         />
+        
+        
         <Button onClick={this.handleSubmit} type="submit">
           Submit
         </Button>
-      </form>
+      </FormStyle>
+    
+      
     );
   }
 }

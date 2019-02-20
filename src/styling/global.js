@@ -8,7 +8,9 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-color: #009DA8;
-    background-image: -webkit-linear-gradient(117deg, #ffffff 63%, #009DA8 50% )
+    background-image: -webkit-linear-gradient(117deg, #ffffff 63%, #009DA8 50% );
+    
+    
 }`
 
 export default GlobalStyle;

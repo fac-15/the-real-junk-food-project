@@ -9,7 +9,9 @@ import PrivateRoute from "./component/routes/privateRoute.js";
 import PublicRoute from "./component/routes/publicRoute.js";
 import Supplier from "./component/supplier/supplier.js";
 import GlobalStyle from "./styling/global.js";
-import Grid from "./styling/grid.js";
+import { Grid, Cell } from "styled-css-grid";
+import CentreDiv from "./styling/centreDiv";
+// import Grid from "./styling/grid.js";
 
 class App extends Component {
   state = {
@@ -29,9 +31,11 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Grid>
-          <div>
-            <GlobalStyle />
+    
+        
+          <CentreDiv>
+          
+          <GlobalStyle />  
             <ul>
               <li>
                 <Link to="/">Home</Link>
@@ -62,8 +66,9 @@ class App extends Component {
                 authed={this.state.isAuthenticated}
               />
             </Switch>
-          </div>
-        </Grid>
+  
+          </CentreDiv>
+        
       </Router>
     );
   }

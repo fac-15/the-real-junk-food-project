@@ -8,11 +8,7 @@ import {
 } from "react-router-dom";
 import decode from "jwt-decode";
 
-const PrivateRoute = ({
-  component: Component,
-  checkToken: checkToken,
-  path: path
-}) => (
+const PrivateRoute = ({ component: Component, checkToken, path }) => (
   <Route
     render={props =>
       //Makes sure that a logged in driver can't access supplier page

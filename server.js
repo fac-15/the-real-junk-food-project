@@ -6,8 +6,29 @@ const getUser = require("./getUser");
 const getDriver = require("./getDriver");
 const getCode = require("./getCode");
 const createRecord = require("./createRecord");
+const updateCode = require("./updateCode");
 const jwt = require("jsonwebtoken");
 const port = process.env.PORT || 8080;
+const cronJob = require("cron").CronJob;
+
+new cronJob(
+  "5 0 * * *",
+  () => {
+    updateCode();
+  },
+  null,
+  true,
+  "Europe/London"
+);
+
+const env = require("env2");
+env("./config.env");
+
+if (!process.env.COOKIE_SECRET) {
+  throw new Error("COOKIE_SECRET environment variable should be set");
+}
+
+const secret = process.env.COOKIE_SECRET;
 
 app.use(express.static(path.join(__dirname, "build")));
 
@@ -23,10 +44,10 @@ app.post("/login", (req, res) => {
         success: false
       });
     } else {
-      console.log("result isss: ", result);
+      console.log("User details from login request: ", result);
       let token = jwt.sign(
         { username: result.name, id: result.id, userRole: result.userRole },
-        "Charlie is not a bitch",
+        secret,
         { expiresIn: 86400 }
       );
       res.json({

@@ -36,6 +36,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post("/login", (req, res) => {
+  console.log("yooo", req.body);
   getUser(req.body, (err, result) => {
     if (err) {
       console.log("Error, login route", err);

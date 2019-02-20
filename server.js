@@ -5,6 +5,7 @@ const app = express();
 const getUser = require("./getUser");
 const getDriver = require("./getDriver");
 const getCode = require("./getCode");
+const createRecord = require("./createRecord");
 const jwt = require("jsonwebtoken");
 const port = process.env.PORT || 8080;
 
@@ -44,6 +45,7 @@ app.post("/verify", (req, res) => {
     }
     if (code.Code === req.body.dailyCode) {
       getDriver(req.body, (err, result) => {
+        console.log("verify route req.body", req.body);
         if (err) {
           console.log("ya done err", err);
         } else if (result === false) {
@@ -52,6 +54,7 @@ app.post("/verify", (req, res) => {
           });
         } else {
           console.log("and result again", result);
+          createRecord(req.body);
           res.json({ success: true, err: null, name: result.name });
         }
       });

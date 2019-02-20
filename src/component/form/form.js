@@ -12,8 +12,8 @@ import Swal from "sweetalert2";
 
 class Form extends Component {
   state = {
-    email: "jjj@jjj.com",
-    pin: "2437",
+    email: "",
+    pin: "",
     userRole: DRIVER,
     loggedIn: false,
     redirectPath: ""

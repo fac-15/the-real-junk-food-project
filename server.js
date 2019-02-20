@@ -20,7 +20,7 @@ app.post("/login", (req, res) => {
         success: false
       });
     } else {
-      console.log("result isss: ", result);
+      console.log("User details from login request: ", result);
       let token = jwt.sign(
         { username: result.name, id: result.id, userRole: result.userRole },
         "Charlie is not a bitch",

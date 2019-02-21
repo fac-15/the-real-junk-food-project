@@ -10,7 +10,9 @@ class LogoutButton extends Component {
   render() {
     return (
       <Link to={"/"}>
-        <Button onClick={this.logout}>Logout</Button>
+        <Button invert onClick={this.logout}>
+          Logout
+        </Button>
       </Link>
     );
   }

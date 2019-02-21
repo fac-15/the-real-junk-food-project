@@ -54,42 +54,46 @@ class Supplier extends React.Component {
   };
   render() {
     return (
-      <GlobalStyle />
-      <FormStyle>
-        <CentreDiv>
-          <label htmlFor="email"></label>
-          <Input
-            type="text"
-            id="email"
-            name="id"
-            value={this.state.id}
-            onChange={this.handleChange}
-            placeholder="Type the driver's ID here"
-            autoFocus
-            required
-          />
-          <label htmlFor="pin"></label>
-          <Input
-            type="text"
-            id="pin"
-            name="dailyCode"
-            value={this.state.dailyCode}
-            onChange={this.handleChange}
-            placeholder='Type the daily code here'
-            //suggested by React errors to include autoComplete attribute
-            autoComplete="off"
-            required
-          />
-          <div className="buttonsDiv">
-            <Button onClick={this.handleSubmit} type="submit">
-              Submit
-            </Button>
-            <Link to={"/"}>
-              <Button onClick={this.logout}>Logout</Button>
-            </Link>
-          </div>
-        </CentreDiv>
-      </FormStyle>
+      <div>
+        <GlobalStyle invert />
+        <FormStyle>
+          <CentreDiv>
+            <label htmlFor="email" />
+            <Input
+              type="text"
+              id="email"
+              name="id"
+              value={this.state.id}
+              onChange={this.handleChange}
+              placeholder="Type the driver's ID here"
+              autoFocus
+              required
+            />
+            <label htmlFor="pin" />
+            <Input
+              type="text"
+              id="pin"
+              name="dailyCode"
+              value={this.state.dailyCode}
+              onChange={this.handleChange}
+              placeholder="Type the daily code here"
+              //suggested by React errors to include autoComplete attribute
+              autoComplete="off"
+              required
+            />
+            <div className="buttonsDiv">
+              <Button invert onClick={this.handleSubmit} type="submit">
+                Submit
+              </Button>
+              <Link to={"/"}>
+                <Button invert onClick={this.logout}>
+                  Logout
+                </Button>
+              </Link>
+            </div>
+          </CentreDiv>
+        </FormStyle>
+      </div>
     );
   }
 }

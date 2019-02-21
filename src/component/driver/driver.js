@@ -3,6 +3,7 @@ import decode from "jwt-decode";
 import Logout from "../buttons/logout/logout.js";
 import CentreDiv from "../../styling/centreDiv.js";
 import Code from "../../styling/code.js";
+import GlobalStyle from "../../styling/global.js";
 
 class Driver extends React.Component {
   state = {
@@ -37,6 +38,7 @@ class Driver extends React.Component {
   render() {
     return (
       <div>
+        <GlobalStyle invert />
         <CentreDiv>
           <p>TODAY'S CODE</p>
           <Code>

@@ -12,6 +12,7 @@ import Swal from "sweetalert2";
 import Button from "../../styling/button.js";
 import Input from "../../styling/form.js";
 import FormStyle from "../../styling/fullForm.js";
+import Label from "../../styling/label.js";
 
 class Form extends Component {
   state = {
@@ -70,29 +71,31 @@ class Form extends Component {
     }
     return (
       <FormStyle>
-        <label htmlFor="driver">
-          <Input
-            type="radio"
-            name="userRole"
-            id="driver"
-            value={DRIVER}
-            checked={this.state.userRole === DRIVER}
-            onChange={this.handleChange}
-          />
-          Driver
-        </label>
-        <label htmlFor="supplier">
-          <Input
-            type="radio"
-            name="userRole"
-            id="supplier"
-            value={SUPPLIER}
-            checked={this.state.userRole === SUPPLIER}
-            onChange={this.handleChange}
-          />
-          Supplier
-        </label>
-        <label htmlFor="email">Type your email here:</label>
+        <div className="userRoleLabels">
+          <Label htmlFor="driver">
+            <Input
+              type="radio"
+              name="userRole"
+              id="driver"
+              value={DRIVER}
+              checked={this.state.userRole === DRIVER}
+              onChange={this.handleChange}
+            />
+            Driver
+          </Label>
+          <Label htmlFor="supplier">
+            <Input
+              type="radio"
+              name="userRole"
+              id="supplier"
+              value={SUPPLIER}
+              checked={this.state.userRole === SUPPLIER}
+              onChange={this.handleChange}
+            />
+            Supplier
+          </Label>
+        </div>
+        <Label htmlFor="email">Type your email here:</Label>
         <Input
           type="email"
           id="email"
@@ -102,7 +105,7 @@ class Form extends Component {
           autoFocus
           required
         />
-        <label htmlFor="pin">Type your PIN here:</label>
+        <Label htmlFor="pin">Type your PIN here:</Label>
         <Input
           type="password"
           id="pin"

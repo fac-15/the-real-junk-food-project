@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import LogoutButton from "../buttons/logout/logout.js";
 import Swal from "sweetalert2";
+import CentreDiv from "../../styling/centreDiv.js";
+import Button from "../../styling/button.js";
+import Form from "../../styling/form.js";
 
 class Supplier extends React.Component {
   state = {
@@ -50,34 +53,35 @@ class Supplier extends React.Component {
   render() {
     return (
       <form>
-        <div>Hello I am supplier</div>;
-        <label htmlFor="email">Type the driver's ID here:</label>
-        <input
-          type="text"
-          id="email"
-          name="id"
-          value={this.state.id}
-          onChange={this.handleChange}
-          autoFocus
-          required
-        />
-        <label htmlFor="pin">Type the daily code here:</label>
-        <input
-          type="text"
-          id="pin"
-          name="dailyCode"
-          value={this.state.dailyCode}
-          onChange={this.handleChange}
-          //suggested by React errors to include autoComplete attribute
-          autoComplete="off"
-          required
-        />
-        <button onClick={this.handleSubmit} type="submit">
-          Submit
-        </button>
-        <Link to={"/"}>
-          <LogoutButton />
-        </Link>
+        <CentreDiv>
+          <label htmlFor="email">Type the driver's ID here:</label>
+          <input
+            type="text"
+            id="email"
+            name="id"
+            value={this.state.id}
+            onChange={this.handleChange}
+            autoFocus
+            required
+          />
+          <label htmlFor="pin">Type the daily code here:</label>
+          <input
+            type="text"
+            id="pin"
+            name="dailyCode"
+            value={this.state.dailyCode}
+            onChange={this.handleChange}
+            //suggested by React errors to include autoComplete attribute
+            autoComplete="off"
+            required
+          />
+          <button onClick={this.handleSubmit} type="submit">
+            Submit
+          </button>
+          <Link to={"/"}>
+            <LogoutButton />
+          </Link>
+        </CentreDiv>
       </form>
     );
   }

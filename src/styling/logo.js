@@ -7,6 +7,7 @@ const LogoStyle = styled.img`
   display: flex;
   flex-direction: column;
   align-items: centre;
+  margin: 15%;
 `;
 
 export default LogoStyle;

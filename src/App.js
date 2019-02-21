@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import "./App.css";
-import Logo from "./img/logo.png";
+import Logo from "./img/logoUpdated.jpeg";
 import LogoStyle from "./styling/logo.js";
 import Form from "./component/form/form.js";
 import Driver from "./component/driver/driver.js";
@@ -43,9 +43,10 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <CentreDiv>
+        <div>
           <GlobalStyle />
-          <div>
+
+          <CentreDiv>
             <LogoStyle src={Logo} alt="logo" />
             <Switch>
               <PublicRoute
@@ -66,8 +67,8 @@ class App extends Component {
               />
               <Route component={Form} />
             </Switch>
-          </div>
-        </CentreDiv>
+          </CentreDiv>
+        </div>
       </Router>
     );
   }

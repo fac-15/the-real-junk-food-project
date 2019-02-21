@@ -7,6 +7,7 @@ import Button from "../../styling/button.js";
 import FormStyle from "../../styling/fullForm.js";
 import Input from "../../styling/form.js";
 import GlobalStyle from "../../styling/global.js";
+import Label from "../../styling/label.js"
 
 class Supplier extends React.Component {
   state = {
@@ -58,7 +59,7 @@ class Supplier extends React.Component {
         <GlobalStyle invert />
         <FormStyle>
           <CentreDiv>
-            <label htmlFor="email" />
+            <Label htmlFor="email" />
             <Input
               type="text"
               id="email"
@@ -69,7 +70,7 @@ class Supplier extends React.Component {
               autoFocus
               required
             />
-            <label htmlFor="pin" />
+            <Label htmlFor="pin" />
             <Input
               type="text"
               id="pin"

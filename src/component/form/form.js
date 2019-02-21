@@ -95,23 +95,25 @@ class Form extends Component {
             Supplier
           </Label>
         </div>
-        <Label htmlFor="email">Type your email here:</Label>
+        <Label htmlFor="email"></Label>
         <Input
           type="email"
           id="email"
           name="email"
           value={this.state.email}
           onChange={this.handleChange}
+          placeholder='Type your email here'
           autoFocus
           required
         />
-        <Label htmlFor="pin">Type your PIN here:</Label>
+        <Label htmlFor="pin"></Label>
         <Input
           type="password"
           id="pin"
           name="pin"
           value={this.state.pin}
           onChange={this.handleChange}
+          placeholder='Type your PIN here'
           //suggested by React errors to include autoComplete attribute
           autoComplete="off"
           maxLength="4"

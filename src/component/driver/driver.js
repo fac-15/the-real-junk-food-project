@@ -1,6 +1,8 @@
 import React from "react";
 import decode from "jwt-decode";
 import Logout from "../buttons/logout/logout.js";
+import CentreDiv from "../../styling/centreDiv.js";
+import Button from "../../styling/button.js";
 
 class Driver extends React.Component {
   state = {
@@ -35,11 +37,15 @@ class Driver extends React.Component {
   render() {
     return (
       <div>
-        <p>TODAY'S CODE</p>
-        <p>{this.state.code || "loading"}</p>
-        <p>YOUR ID</p>
-        <p>{this.populateId()}</p>
-        <Logout />
+        <CentreDiv>
+          <p>TODAY'S CODE</p>
+          <p>{this.state.code || "loading"}</p>
+          <p>YOUR ID</p>
+          <p>{this.populateId()}</p>
+          <Button>
+            <Logout />
+          </Button>
+        </CentreDiv>
       </div>
     );
   }

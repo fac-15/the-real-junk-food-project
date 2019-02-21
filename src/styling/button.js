@@ -12,5 +12,6 @@ const Button = styled.button`
   :hover {
     background: #b9faff;
   }
+  margin: 10%;
 `;
 export default Button;

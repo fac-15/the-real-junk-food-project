@@ -21,7 +21,7 @@ const getUser = (loginData, cb) => {
     .eachPage(
       function page(records, fetchNextPage) {
         console.log("heres records", records);
-        if (records.length === 0 || !records[0].fields.ID) {
+        if (records.length === 0 || !records[0].fields.Name) {
           console.log("into the return of false");
           return cb(null, false);
         }

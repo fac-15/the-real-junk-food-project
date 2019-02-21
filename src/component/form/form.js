@@ -9,6 +9,9 @@ import {
 } from "react-router-dom";
 import decode from "jwt-decode";
 import Swal from "sweetalert2";
+import Button from "../../styling/button.js";
+import Input from "../../styling/form.js";
+import FormStyle from "../../styling/fullForm.js";
 
 class Form extends Component {
   state = {
@@ -66,9 +69,9 @@ class Form extends Component {
       return <Redirect to="/Suppliers" />;
     }
     return (
-      <form>
+      <FormStyle>
         <label htmlFor="driver">
-          <input
+          <Input
             type="radio"
             name="userRole"
             id="driver"
@@ -79,7 +82,7 @@ class Form extends Component {
           Driver
         </label>
         <label htmlFor="supplier">
-          <input
+          <Input
             type="radio"
             name="userRole"
             id="supplier"
@@ -90,7 +93,7 @@ class Form extends Component {
           Supplier
         </label>
         <label htmlFor="email">Type your email here:</label>
-        <input
+        <Input
           type="email"
           id="email"
           name="email"
@@ -100,7 +103,7 @@ class Form extends Component {
           required
         />
         <label htmlFor="pin">Type your PIN here:</label>
-        <input
+        <Input
           type="password"
           id="pin"
           name="pin"
@@ -112,11 +115,11 @@ class Form extends Component {
           required
         />
         <Link to={"/"}>
-          <button onClick={this.handleSubmit} type="submit">
+          <Button onClick={this.handleSubmit} type="submit">
             Submit
-          </button>
+          </Button>
         </Link>
-      </form>
+      </FormStyle>
     );
   }
 }

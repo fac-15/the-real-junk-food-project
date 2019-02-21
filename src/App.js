@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import "./App.css";
 import Logo from "./img/logo.png";
+import LogoStyle from "./styling/logo.js";
 import Form from "./component/form/form.js";
 import Driver from "./component/driver/driver.js";
 import PrivateRoute from "./component/routes/privateRoute.js";
 import PublicRoute from "./component/routes/publicRoute.js";
 import Supplier from "./component/supplier/supplier.js";
 import decode from "jwt-decode";
+import GlobalStyle from "./styling/global.js";
+import CentreDiv from "./styling/centreDiv";
 
 class App extends Component {
   state = {
@@ -40,28 +43,31 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <img src={Logo} alt="logo" />
-          <Switch>
-            <PublicRoute
-              exact
-              path="/"
-              checkToken={this.checkToken}
-              component={Form}
-            />
-            <PrivateRoute
-              path="/Drivers"
-              component={Driver}
-              checkToken={this.checkToken}
-            />
-            <PrivateRoute
-              path="/Suppliers"
-              component={Supplier}
-              checkToken={this.checkToken}
-            />
-            <Route component={Form} />
-          </Switch>
-        </div>
+        <CentreDiv>
+          <GlobalStyle />
+          <div>
+            <LogoStyle src={Logo} alt="logo" />
+            <Switch>
+              <PublicRoute
+                exact
+                path="/"
+                checkToken={this.checkToken}
+                component={Form}
+              />
+              <PrivateRoute
+                path="/Drivers"
+                component={Driver}
+                checkToken={this.checkToken}
+              />
+              <PrivateRoute
+                path="/Suppliers"
+                component={Supplier}
+                checkToken={this.checkToken}
+              />
+              <Route component={Form} />
+            </Switch>
+          </div>
+        </CentreDiv>
       </Router>
     );
   }

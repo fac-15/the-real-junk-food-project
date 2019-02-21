@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Button from "../../../styling/button.js";
 
 class LogoutButton extends Component {
   logout = () => {
@@ -9,7 +10,7 @@ class LogoutButton extends Component {
   render() {
     return (
       <Link to={"/"}>
-        <button onClick={this.logout}>Logout</button>
+        <Button onClick={this.logout}>Logout</Button>
       </Link>
     );
   }

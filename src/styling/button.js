@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Button = styled.button`
-  width: 9rem;
+  width: 8rem;
   height: 3rem;
   background: #009da8;
   border-radius: 0.5em;
@@ -13,5 +13,7 @@ const Button = styled.button`
     background: #b9faff;
   }
   margin: 10%;
+  display: inline-block;
+  margin: 10px;
 `;
 export default Button;

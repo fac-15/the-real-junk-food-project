@@ -2,7 +2,7 @@ import React from "react";
 import decode from "jwt-decode";
 import Logout from "../buttons/logout/logout.js";
 import CentreDiv from "../../styling/centreDiv.js";
-import Button from "../../styling/button.js";
+import Code from "../../styling/code.js";
 
 class Driver extends React.Component {
   state = {
@@ -39,12 +39,14 @@ class Driver extends React.Component {
       <div>
         <CentreDiv>
           <p>TODAY'S CODE</p>
-          <p>{this.state.code || "loading"}</p>
+          <Code>
+            <p>{this.state.code || "loading"}</p>
+          </Code>
           <p>YOUR ID</p>
-          <p>{this.populateId()}</p>
-          <Button>
-            <Logout />
-          </Button>
+          <Code>
+            <p>{this.populateId()}</p>
+          </Code>
+          <Logout />
         </CentreDiv>
       </div>
     );

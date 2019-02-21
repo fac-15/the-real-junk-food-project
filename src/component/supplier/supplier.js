@@ -4,7 +4,9 @@ import LogoutButton from "../buttons/logout/logout.js";
 import Swal from "sweetalert2";
 import CentreDiv from "../../styling/centreDiv.js";
 import Button from "../../styling/button.js";
-import Form from "../../styling/form.js";
+import FormStyle from "../../styling/fullForm.js";
+import Input from "../../styling/form.js";
+import GlobalStyle from "../../styling/global.js";
 
 class Supplier extends React.Component {
   state = {
@@ -52,37 +54,42 @@ class Supplier extends React.Component {
   };
   render() {
     return (
-      <form>
+      <GlobalStyle />
+      <FormStyle>
         <CentreDiv>
-          <label htmlFor="email">Type the driver's ID here:</label>
-          <input
+          <label htmlFor="email"></label>
+          <Input
             type="text"
             id="email"
             name="id"
             value={this.state.id}
             onChange={this.handleChange}
+            placeholder="Type the driver's ID here"
             autoFocus
             required
           />
-          <label htmlFor="pin">Type the daily code here:</label>
-          <input
+          <label htmlFor="pin"></label>
+          <Input
             type="text"
             id="pin"
             name="dailyCode"
             value={this.state.dailyCode}
             onChange={this.handleChange}
+            placeholder='Type the daily code here'
             //suggested by React errors to include autoComplete attribute
             autoComplete="off"
             required
           />
-          <button onClick={this.handleSubmit} type="submit">
-            Submit
-          </button>
-          <Link to={"/"}>
-            <LogoutButton />
-          </Link>
+          <div className="buttonsDiv">
+            <Button onClick={this.handleSubmit} type="submit">
+              Submit
+            </Button>
+            <Link to={"/"}>
+              <Button onClick={this.logout}>Logout</Button>
+            </Link>
+          </div>
         </CentreDiv>
-      </form>
+      </FormStyle>
     );
   }
 }

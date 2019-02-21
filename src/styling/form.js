@@ -6,10 +6,6 @@ const Input = styled.input`
   outline: none;
   padding: 0.1em;
   font-size: 0.7em;
-
-  ::placeholder {
-    color: black;
-  }
 `;
 
 export default Input;

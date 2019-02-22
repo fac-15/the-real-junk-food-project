@@ -1,13 +1,15 @@
 # The Real Junk Food Project
 
-![](http://www.pacnvac.co.uk/wp-content/uploads/2017/07/logo_280x280.png)
+[![](https://avatars1.githubusercontent.com/u/47320329?s=460&v=4)](https://trjfpapp.herokuapp.com/)
+
+### :rocket: Click the logo above, it will link to the web application 
 
 ## Contents
 - [Context](#Context)
 - [The App](#The-App)
 - [Current Implementation Ideas](#Current-Implementation-Ideas)
 - [Tech Stack](#Tech-Stack)
-- [Installation](#Installation)
+- [Installation](#Installation-for-developing-environment)
 - [Team](#Team)
 
 ## Context
@@ -23,15 +25,14 @@ Our main objectives are:
 
 One request from the client is that we include a code that changes daily in order to help secure the verification.
 
-## Current Implementation Ideas
+## Implementation
+#### Planning:
 ![](https://i.imgur.com/uWmhbBL.jpg)
+#### Figma (prototyping):
 ![](https://i.imgur.com/c2fjnYM.png)
+#### Product:
+![](https://i.imgur.com/7Xoa4BU.png)
 
-To begin with, there will be a log in page. For the moment we are thinking of using Airtable.com to host our database, so that the client can log in and access it from there. For the moment, they will input the list of current drivers and suppliers, including their details and a pin, and they will use that information to log in with an email and pin number.
-
-Drivers, once logged in, will simply see a screen with today's code (that will originally be hard coded into an Airtable, but will eventually be generated daily) and a reminder of their ID number (or other personally identifiable information). Ideally we would also like to include a list of anywhere that they have been confirmed to have picked up deliveries that day.
-
-Suppliers, once logged in, will see two inputs - one for today's code and another for the driver's ID number. They will need to ask the driver for the information for both (they can just show their own page on the app) and then submit it. If all is well they will receive a success page, otherwise they will receive an error page potentially asking them to try again or providing the number to call The Real Junk Food Project. If the verification is successful, we will also record in the database the driver's name, the supplier, and the time, so that there are records for every pick up.
 
 ## Tech Stack
 
@@ -42,6 +43,17 @@ Suppliers, once logged in, will see two inputs - one for today's code and anothe
 | Back-end  | Node-Express  |
 | Database  | Airtable API  |
 | Test  | Jest  |
+
+## Installation for developing environment
+1. Clone repo onto your local machine
+```git clone https://github.com/fac-15/the-real-junk-food-project.git```
+2. Install dependencies
+``` npm i ```
+3. Start development environment
+``` npm run devstart```
+4. Run node server (nodemon must be installed globally)
+```nodemon server.js```
+5. Enjoy exploring our app :sparkles:
 
 ## Team
 

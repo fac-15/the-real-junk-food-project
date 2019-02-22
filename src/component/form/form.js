@@ -19,6 +19,7 @@ class Form extends Component {
   state = {
     email: "",
     pin: "",
+    username: "",
     userRole: DRIVER,
     loggedIn: false,
     redirectPath: ""
@@ -51,8 +52,10 @@ class Form extends Component {
             type: "success",
             title: "Login Successful!"
           });
-          const { userRole } = this.props.checkToken();
-          this.setState({ loggedIn: true, redirectPath: userRole });
+          const { userRole, username } = this.props.checkToken();
+          console.log("username const is", username);
+          this.setState({ loggedIn: true, redirectPath: userRole, username });
+          console.log("updated state?", this.state.username);
         }
       })
       .catch(err =>

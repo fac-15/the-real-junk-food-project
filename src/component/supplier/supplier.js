@@ -8,15 +8,33 @@ import FormStyle from "../../styling/fullForm.js";
 import Input from "../../styling/form.js";
 import GlobalStyle from "../../styling/global.js";
 import Label from "../../styling/label.js";
+import decode from "jwt-decode";
 import "./background.css";
 
 class Supplier extends React.Component {
   state = {
     id: "",
-    dailyCode: ""
+    dailyCode: "",
+    username: ""
+  };
+  checkSupplierToken = () => {
+    if (localStorage.getItem("id_token")) {
+      const { username, id, userRole } = decode(
+        localStorage.getItem("id_token")
+      );
+      return { username, id, userRole };
+    } else {
+      console.log("No token exists with that ID");
+      return false;
+    }
   };
   handleChange = ({ target }) => {
-    this.setState({ [target.name]: target.value });
+    const { username } = this.checkSupplierToken();
+    this.setState({
+      [target.name]: target.value,
+      username
+    });
+    console.log("username in supplier state?", username);
   };
   handleSubmit = event => {
     event.preventDefault();

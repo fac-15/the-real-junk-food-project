@@ -8,6 +8,7 @@ import FormStyle from "../../styling/fullForm.js";
 import Input from "../../styling/form.js";
 import GlobalStyle from "../../styling/global.js";
 import Label from "../../styling/label.js";
+import "./background.css";
 
 class Supplier extends React.Component {
   state = {

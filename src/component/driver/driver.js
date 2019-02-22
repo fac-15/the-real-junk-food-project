@@ -4,6 +4,7 @@ import Logout from "../buttons/logout/logout.js";
 import CentreDiv from "../../styling/centreDiv.js";
 import Code from "../../styling/code.js";
 import GlobalStyle from "../../styling/global.js";
+import "./background.css";
 
 class Driver extends React.Component {
   state = {

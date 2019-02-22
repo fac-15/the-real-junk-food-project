@@ -13,6 +13,7 @@ import Button from "../../styling/button.js";
 import Input from "../../styling/form.js";
 import FormStyle from "../../styling/fullForm.js";
 import Label from "../../styling/label.js";
+import "./background.css";
 
 class Form extends Component {
   state = {

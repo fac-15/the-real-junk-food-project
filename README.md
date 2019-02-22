@@ -10,6 +10,7 @@
 - [Current Implementation Ideas](#Current-Implementation-Ideas)
 - [Tech Stack](#Tech-Stack)
 - [Installation](#Installation-for-developing-environment)
+- [Managing the App](#Managing-The-App)
 - [Team](#Team)
 
 ## Context
@@ -43,6 +44,7 @@ One request from the client is that we include a code that changes daily in orde
 | Back-end  | Node-Express  |
 | Database  | Airtable API  |
 | Test  | Jest  |
+| Deployment  | Heroku  |
 
 ## Installation for developing environment
 1. Clone repo onto your local machine
@@ -54,6 +56,13 @@ One request from the client is that we include a code that changes daily in orde
 4. Run node server (nodemon must be installed globally)
 ```nodemon server.js```
 5. Enjoy exploring our app :sparkles:
+
+## Managing the App
+
+- TRJFP App uses [Airtable](https://airtable.com/) (similar in use to Google Sheets) as an accessible database which must be maintained by a TRJFP administrator
+- Driver and supplier details must be input manually by the administrator (including the pin and ID) which must then be manually communicated to the parties involved
+- When a driver is verified, a record is created in the Airtable database which can be checked by the administrator
+
 
 ## Team
 

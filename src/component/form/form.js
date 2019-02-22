@@ -13,6 +13,7 @@ import Button from "../../styling/button.js";
 import Input from "../../styling/form.js";
 import FormStyle from "../../styling/fullForm.js";
 import Label from "../../styling/label.js";
+import "./background.css";
 
 class Form extends Component {
   state = {
@@ -49,8 +50,7 @@ class Form extends Component {
           localStorage.setItem("id_token", returnedData.token);
           Swal.fire({
             type: "success",
-            title: "Successful Login!",
-            text: "Woohoo"
+            title: "Login Successful!"
           });
           const { userRole, username } = this.props.checkToken();
           console.log("username const is", username);
@@ -70,14 +70,7 @@ class Form extends Component {
     if (this.state.loggedIn && this.state.redirectPath === "Drivers") {
       return <Redirect to="/Drivers" />;
     } else if (this.state.loggedIn && this.state.redirectPath === "Suppliers") {
-      return (
-        <Redirect
-          to={{
-            pathname: "/Suppliers",
-            checkToken: this.props.checkToken
-          }}
-        />
-      );
+      return <Redirect to="/Suppliers" />;
     }
     return (
       <FormStyle>
@@ -130,8 +123,8 @@ class Form extends Component {
           required
         />
         <Link to={"/"}>
-          <Button onClick={this.handleSubmit} type="submit">
-            Submit
+          <Button invert onClick={this.handleSubmit} type="submit">
+            Login
           </Button>
         </Link>
       </FormStyle>

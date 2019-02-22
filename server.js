@@ -2,11 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const app = express();
-const getUser = require("./getUser");
-const getDriver = require("./getDriver");
-const getCode = require("./getCode");
-const createRecord = require("./createRecord");
-const updateCode = require("./updateCode");
+const getUser = require("./src/apiCalls/getUser");
+const getDriver = require("./src/apiCalls/getDriver");
+const getCode = require("./src/apiCalls/getCode");
+const createRecord = require("./src/apiCalls/createRecord");
+const updateCode = require("./src/apiCalls/updateCode");
 const jwt = require("jsonwebtoken");
 const port = process.env.PORT || 8080;
 const cronJob = require("cron").CronJob;
@@ -36,16 +36,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post("/login", (req, res) => {
-  console.log("yooo", req.body);
   getUser(req.body, (err, result) => {
     if (err) {
-      console.log("Error, login route", err);
+      console.log("getUser error in /login: ", err);
     } else if (result === false) {
       res.json({
         success: false
       });
     } else {
-      console.log("User details from login request: ", result);
       let token = jwt.sign(
         { username: result.name, id: result.id, userRole: result.userRole },
         secret,
@@ -63,19 +61,17 @@ app.post("/login", (req, res) => {
 app.post("/verify", (req, res) => {
   getCode((error, code) => {
     if (error) {
-      console.log("getCode error", error);
+      console.log("getCode error in /verify: ", error);
     }
     if (code.Code === req.body.dailyCode) {
       getDriver(req.body, (err, result) => {
-        console.log("verify route req.body", req.body);
         if (err) {
-          console.log("ya done err", err);
+          console.log("getDriver error in /verify: ", err);
         } else if (result === false) {
           res.json({
             success: false
           });
         } else {
-          console.log("req body is!!", req.body);
           createRecord(req.body);
           res.json({ success: true, err: null, name: result.name });
         }
@@ -89,6 +85,7 @@ app.post("/verify", (req, res) => {
 app.get("/getcode", (req, res) => {
   getCode((err, code) => {
     if (err) {
+      console.log("getCode error in /getCode: ", err);
     }
     res.send(code);
   });

@@ -35,7 +35,13 @@ Suppliers, once logged in, will see two inputs - one for today's code and anothe
 
 ## Tech Stack
 
-- Coming soon
+| Tech | Stack |
+| ------------- | ------------- |
+| Front-end  | React  |
+| Styling  | Styled-components, CSS  |
+| Back-end  | Node-Express  |
+| Database  | Airtable API  |
+| Test  | Jest  |
 
 ## Team
 

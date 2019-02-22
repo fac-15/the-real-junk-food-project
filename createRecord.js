@@ -14,7 +14,8 @@ const base = new Airtable({ apiKey }).base(process.env.BASE_KEY);
 const createRecord = data => {
   base("Pickups").create(
     {
-      "Driver ID": data.id
+      "Driver ID": data.id,
+      Supplier: data.username
     },
     function(err, record) {
       if (err) {

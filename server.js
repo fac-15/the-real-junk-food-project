@@ -75,7 +75,7 @@ app.post("/verify", (req, res) => {
             success: false
           });
         } else {
-          console.log("and result again", result);
+          console.log("req body is!!", req.body);
           createRecord(req.body);
           res.json({ success: true, err: null, name: result.name });
         }

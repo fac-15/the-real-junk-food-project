@@ -18,6 +18,7 @@ class Form extends Component {
   state = {
     email: "",
     pin: "",
+    username: "",
     userRole: DRIVER,
     loggedIn: false,
     redirectPath: ""
@@ -51,8 +52,10 @@ class Form extends Component {
             title: "Successful Login!",
             text: "Woohoo"
           });
-          const { userRole } = this.props.checkToken();
-          this.setState({ loggedIn: true, redirectPath: userRole });
+          const { userRole, username } = this.props.checkToken();
+          console.log("username const is", username);
+          this.setState({ loggedIn: true, redirectPath: userRole, username });
+          console.log("updated state?", this.state.username);
         }
       })
       .catch(err =>
@@ -67,7 +70,14 @@ class Form extends Component {
     if (this.state.loggedIn && this.state.redirectPath === "Drivers") {
       return <Redirect to="/Drivers" />;
     } else if (this.state.loggedIn && this.state.redirectPath === "Suppliers") {
-      return <Redirect to="/Suppliers" />;
+      return (
+        <Redirect
+          to={{
+            pathname: "/Suppliers",
+            checkToken: this.props.checkToken
+          }}
+        />
+      );
     }
     return (
       <FormStyle>
@@ -95,25 +105,25 @@ class Form extends Component {
             Supplier
           </Label>
         </div>
-        <Label htmlFor="email"></Label>
+        <Label htmlFor="email" />
         <Input
           type="email"
           id="email"
           name="email"
           value={this.state.email}
           onChange={this.handleChange}
-          placeholder='Type your email here'
+          placeholder="Type your email here"
           autoFocus
           required
         />
-        <Label htmlFor="pin"></Label>
+        <Label htmlFor="pin" />
         <Input
           type="password"
           id="pin"
           name="pin"
           value={this.state.pin}
           onChange={this.handleChange}
-          placeholder='Type your PIN here'
+          placeholder="Type your PIN here"
           //suggested by React errors to include autoComplete attribute
           autoComplete="off"
           maxLength="4"

@@ -7,7 +7,8 @@ import Button from "../../styling/button.js";
 import FormStyle from "../../styling/fullForm.js";
 import Input from "../../styling/form.js";
 import GlobalStyle from "../../styling/global.js";
-import Label from "../../styling/label.js"
+import Label from "../../styling/label.js";
+import "./background.css";
 
 class Supplier extends React.Component {
   state = {
@@ -18,7 +19,6 @@ class Supplier extends React.Component {
     this.setState({ [target.name]: target.value });
   };
   handleSubmit = event => {
-    console.log("lesgo");
     event.preventDefault();
     const data = JSON.stringify(this.state);
     fetch("/verify", {
@@ -39,8 +39,10 @@ class Supplier extends React.Component {
         } else {
           Swal.fire({
             type: "success",
-            title: `Say hello to ${returnedData.name}`,
-            text: "Woohoo"
+            title: `Verification Successful!`,
+            text: `This pickup has been recorded and sent to The Real Junk Food Project. Your driver is ${
+              returnedData.name
+            }.`
           });
           // const { userRole } = this.props.checkToken();
           // this.setState({ loggedIn: true, redirectPath: userRole });

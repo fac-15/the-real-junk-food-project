@@ -13,6 +13,7 @@ import Button from "../../styling/button.js";
 import Input from "../../styling/form.js";
 import FormStyle from "../../styling/fullForm.js";
 import Label from "../../styling/label.js";
+import "./background.css";
 
 class Form extends Component {
   state = {
@@ -48,8 +49,7 @@ class Form extends Component {
           localStorage.setItem("id_token", returnedData.token);
           Swal.fire({
             type: "success",
-            title: "Successful Login!",
-            text: "Woohoo"
+            title: "Login Successful!"
           });
           const { userRole } = this.props.checkToken();
           this.setState({ loggedIn: true, redirectPath: userRole });
@@ -95,33 +95,33 @@ class Form extends Component {
             Supplier
           </Label>
         </div>
-        <Label htmlFor="email"></Label>
+        <Label htmlFor="email" />
         <Input
           type="email"
           id="email"
           name="email"
           value={this.state.email}
           onChange={this.handleChange}
-          placeholder='Type your email here'
+          placeholder="Type your email here"
           autoFocus
           required
         />
-        <Label htmlFor="pin"></Label>
+        <Label htmlFor="pin" />
         <Input
           type="password"
           id="pin"
           name="pin"
           value={this.state.pin}
           onChange={this.handleChange}
-          placeholder='Type your PIN here'
+          placeholder="Type your PIN here"
           //suggested by React errors to include autoComplete attribute
           autoComplete="off"
           maxLength="4"
           required
         />
         <Link to={"/"}>
-          <Button onClick={this.handleSubmit} type="submit">
-            Submit
+          <Button invert onClick={this.handleSubmit} type="submit">
+            Login
           </Button>
         </Link>
       </FormStyle>

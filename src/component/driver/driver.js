@@ -41,13 +41,9 @@ class Driver extends React.Component {
         <GlobalStyle invert />
         <CentreDiv>
           <p>TODAY'S CODE</p>
-          <Code>
-            <p>{this.state.code || "loading"}</p>
-          </Code>
+          <Code>{this.state.code || "loading"}</Code>
           <p>YOUR ID</p>
-          <Code>
-            <p>{this.populateId()}</p>
-          </Code>
+          <Code>{this.populateId()}</Code>
           <Logout />
         </CentreDiv>
       </div>

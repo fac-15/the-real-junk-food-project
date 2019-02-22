@@ -8,9 +8,10 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-color: #009DA8;
-    background-image: linear-gradient(155deg, ${props =>
-      props.invert ? "#ffffff" : "#009DA8"} 35%, ${props =>
-  props.invert ? "#009DA8" : "#ffffff"} 35% );
+    {/* Background gradient wouldn't work on Heroku:
+       background-image: linear-gradient(155deg, ${props =>
+         props.invert ? "#ffffff" : "#009DA8"} 35%, ${props =>
+  props.invert ? "#009DA8" : "#ffffff"} 35% );*/ }
 
 p {
   margin: 0.2em;
